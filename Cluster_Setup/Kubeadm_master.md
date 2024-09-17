@@ -1,5 +1,3 @@
-#!/bin/bash
-
 ### Disable swap
 ```
 swapoff -a
