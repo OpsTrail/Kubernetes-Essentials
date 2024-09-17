@@ -1,3 +1,12 @@
+# Pre-requisites
+
+### Cloud Platform
+
+**You can use any of the cloud Platforms of your choice which are listed below. The steps will be the same for all the cloud platforms.**
+- AWS
+- AZURE
+- GCP
+
 **For setting up the cluster each VM should be like the below**
   
   | Purpose   | VM Name          | CPU | Memory | Disk  | Operating System |
