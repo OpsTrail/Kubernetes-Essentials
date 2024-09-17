@@ -1,0 +1,7 @@
+**For setting up cluster each VM should be like below **
+  
+  | Purpose   | VM Name          | CPU | Memory | Disk  | Operating System |
+  | -------   | ---------------- | --- | ------ | ----  | ---------------- |
+  | Machine 1 | k8s master       |  2  | 4 GB   | 10 GB | Ubuntu  24.0 LTS |
+  | Machine 2 | Worker node1     |  2  | 4 GB   | 10 GB | Ubuntu  24.0 LTS |
+  | Machine 3 | Worker node2     |  2  | 4 GB   | 10 GB | Ubuntu  24.0 LTS |
