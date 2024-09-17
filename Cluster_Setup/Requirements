@@ -1,4 +1,4 @@
-**For setting up cluster each VM should be like below **
+** For setting up cluster each VM should be like below **
   
   | Purpose   | VM Name          | CPU | Memory | Disk  | Operating System |
   | -------   | ---------------- | --- | ------ | ----  | ---------------- |
