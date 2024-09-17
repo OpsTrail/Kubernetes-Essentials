@@ -54,6 +54,3 @@ sudo systemctl restart containerd
 sudo systemctl enable containerd
 
 sudo systemctl status containerd
-
-kubeadm join 172.31.33.189:6443 --token dl6nbv.g2kbrrem0tx6z6wh \
-        --discovery-token-ca-cert-hash sha256:9e2ed7d8d162d12e39e32ba768348976df7687e8bb79f12455c7c16d3d0f082b
