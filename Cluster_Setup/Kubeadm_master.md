@@ -117,7 +117,27 @@ sudo chown -R ubuntu:ubuntu /home/ubuntu/.kube/config
 export KUBECONFIG=/home/ubuntu/.kube/config
 ```
 
-### Installing Calico CNI
+### Installing Cilium CNI
+
+- Adding the binary of cilium 
+
 ```
-kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.1/manifests/calico.yaml
+CILIUM_CLI_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/cilium-cli/main/stable.txt)
+CLI_ARCH=amd64
+
+curl -L --fail --remote-name-all https://github.com/cilium/cilium-cli/releases/download/${CILIUM_CLI_VERSION}/cilium-linux-${CLI_ARCH}.tar.gz{,.sha256sum}
+sha256sum --check cilium-linux-${CLI_ARCH}.tar.gz.sha256sum
+sudo tar xzvfC cilium-linux-${CLI_ARCH}.tar.gz /usr/local/bin
+rm cilium-linux-${CLI_ARCH}.tar.gz{,.sha256sum}
+```
+- Installing the cilium
+
+```
+cilium install
+```
+
+- Check the cilium status
+
+```
+cilium status
 ```
