@@ -75,6 +75,8 @@ echo \
 ```
 ### Installing Docker and Containerd
 
+- Containerd is one of the Container Runtime Interface(CRI) for kubernetes to run the containers.
+
 ```
 sudo apt-get update
 sudo apt-get install containerd.io docker-ce docker-ce-cli docker-buildx-plugin -y
@@ -89,6 +91,8 @@ containerd config default | tee /etc/containerd/config.toml
 sed -e 's/SystemdCgroup = false/SystemdCgroup = true/g' -i /etc/containerd/config.toml
 ```
 ### Restarting Containerd
+
+- Restarting and enablig the containerd service so the above configuration can be applied.
 
 ```
 sudo systemctl restart containerd
