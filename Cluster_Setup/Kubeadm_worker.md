@@ -1,9 +1,15 @@
 ### Disable swap
+
+- First, we are disabling the swap and removing the entries from the fstab
+
 ```
 swapoff -a
 sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 ```
-### Configure System Networking
+### Loading Required Kernel Modules
+
+- overlay is used for storage management for cuntainer runtimes
+netfilter is used for allowing iptables to interact with network bridge traffic
 
 ```
 cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
@@ -15,21 +21,27 @@ EOF
 sudo modprobe overlay
 sudo modprobe br_netfilter
 ```
-```
+
+### Configuring System Networking
+
+- Here it is Ensuring that the Linux bridge passes the ipv4 and iv6 network traffic to iptables for filtering. And also Enabling packet forwarding for IPv4, which is necessary for pod-to-pod communication across nodes.
+
+```  
 cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
 net.bridge.bridge-nf-call-iptables  = 1
 net.bridge.bridge-nf-call-ip6tables = 1
 net.ipv4.ip_forward                 = 1
 EOF
 ```
-
-### Apply sysctl params without reboot
+- After that apply the above sysctl configurations without rebooting the system.
 
 ```
 sudo sysctl --system
 ```
 
 ### Adding Kubernetes repository
+
+- Before adding the Kubernetes repository we are doing apt update and and installing some packages
 
 ```
 sudo apt-get update
@@ -41,7 +53,7 @@ curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --
 echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
 ```
 
-### Installing Kubeadm 
+### Installing Kubeadm, Kubectl, Kubelet
 
 ```
 sudo apt-get update
@@ -53,7 +65,6 @@ sudo apt-mark hold kubelet kubeadm kubectl
 
 ```
 sudo apt-get update
-sudo apt-get install ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc
@@ -64,11 +75,15 @@ echo \
 ```
 ### Installing Docker and Containerd
 
+- Containerd is one of the Container Runtime Interface(CRI) for kubernetes to run the containers.
+
 ```
 sudo apt-get update
-sudo apt-get install containerd.io docker-ce docker-ce-cli docker-buildx-plugin docker-compose-plugin -y
+sudo apt-get install containerd.io docker-ce docker-ce-cli docker-buildx-plugin -y
 ```
 ### Configuring Systemd Cgroup for contanerd
+
+- Basically here it is Generating a default containerd configuration and modifies it to use systemd as the cgroup driver, which is recommended for Kubernetes.
 
 ```
 mkdir -p /etc/containerd
@@ -76,6 +91,8 @@ containerd config default | tee /etc/containerd/config.toml
 sed -e 's/SystemdCgroup = false/SystemdCgroup = true/g' -i /etc/containerd/config.toml
 ```
 ### Restarting Containerd
+
+- Restarting and enablig the containerd service so the above configuration can be applied.
 
 ```
 sudo systemctl restart containerd
