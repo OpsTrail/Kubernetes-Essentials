@@ -12,12 +12,12 @@ kubectl run apache --image=httpd
 
 - Generating the yaml file using Ad-Hoc commands
 ```
-sudo kubectl run apache2 --image=httpd -o yaml --dry-run=client > apache.yaml
+kubectl run apache2 --image=httpd -o yaml --dry-run=client > apache.yaml
 ```
 
 - Creating pod by specfing command during the pod creation
 ```
-sudo kubectl run busybox --image=busybox --command -- sh -c "while true; do echo Hello from BusyBox; sleep 2; done"
+kubectl run busybox --image=busybox --command -- sh -c "while true; do echo Hello from BusyBox; sleep 2; done"
 ```
 
 ### Getting pod information
@@ -44,9 +44,9 @@ kubectl describe pod <pod name>
 ```
 kubectl apply -f multipod.yaml
 ```
-**Note:** You can create multicontainer pod using Ad-Hoc commands
+**Note:** You can't create multicontainer pod using Ad-Hoc commands
 
-### How to exec into perticular pod
+### How to exec into the pod
 
 - if single container
 ```
