@@ -1,9 +1,15 @@
 ### Disable swap
+
+- First, we are disabling the swap and removing the entries from the fstab
+
 ```
 swapoff -a
 sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 ```
-### Configure System Networking
+### Loading Required Kernel Modules
+
+- overlay is used for storage management for cuntainer runtimes
+netfilter is used for allowing iptables to interact with network bridge traffic
 
 ```
 cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
@@ -16,20 +22,26 @@ sudo modprobe overlay
 sudo modprobe br_netfilter
 ```
 ```
+
+### Configuring System Networking
+
+- Here it is Ensuring that the Linux bridge passes the ipv4 and iv6 network traffic to iptables for filtering. And also Enabling packet forwarding for IPv4, which is necessary for pod-to-pod communication across nodes.
+
 cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
 net.bridge.bridge-nf-call-iptables  = 1
 net.bridge.bridge-nf-call-ip6tables = 1
 net.ipv4.ip_forward                 = 1
 EOF
 ```
-
-### Apply sysctl params without reboot
+- After that apply the above sysctl configurations without rebooting the system.
 
 ```
 sudo sysctl --system
 ```
 
 ### Adding Kubernetes repository
+
+Then we are adding the Kubernetes repository and 
 
 ```
 sudo apt-get update
@@ -87,17 +99,16 @@ sudo systemctl status containerd
 ```
 kubeadm init --apiserver-advertise-address $(hostname -i) --pod-network-cidr=192.168.0.0/16
 ```
-### Configure kubectl for the User
+### Configure kubeconfig for the User
 
 ```
-sudo mkdir -p $HOME/.kube
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
+sudo mkdir -p /home/ubuntu/.kube
+sudo cp /etc/kubernetes/admin.conf /home/ubuntu/.kube/config
+sudo chown -R ubuntu:ubuntu /home/ubuntu/.kube/config
+export KUBECONFIG=/home/ubuntu/.kube/config
 ```
-```
-export KUBECONFIG=/etc/kubernetes/admin.conf
-```
+
 ### Installing Calico CNI
 ```
-sudo kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.1/manifests/calico.yaml
+kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.1/manifests/calico.yaml
 ```
