@@ -77,7 +77,7 @@ echo \
 
 ```
 sudo apt-get update
-sudo apt-get install containerd.io docker-ce docker-ce-cli docker-buildx-plugin docker-compose-plugin -y
+sudo apt-get install containerd.io docker-ce docker-ce-cli docker-buildx-plugin -y
 ```
 ### Configuring Systemd Cgroup for contanerd
 
