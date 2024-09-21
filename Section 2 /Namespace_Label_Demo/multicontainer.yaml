@@ -5,11 +5,11 @@ metadata:
   namespace: staging
   labels:
     env: staging
-	app: busybox
-	web: apache
+    app: busybox
+    web: apache
 spec:
   containers:
-  - name: apache
+  - name: httpd
     image: httpd
     ports:
     - containerPort: 80
