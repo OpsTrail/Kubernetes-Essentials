@@ -11,4 +11,5 @@ kubetcl create ns <namespace name>
 ```
 kubectl apply -f namespace.yaml
 ```
+### Creating Pods under namespace and labels
 
