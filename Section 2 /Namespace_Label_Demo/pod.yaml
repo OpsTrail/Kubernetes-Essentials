@@ -5,10 +5,9 @@ metadata:
   namespace: dev
   labels:
     env: dev
-	  app: httpd
 spec:
   containers:
-  - name: apache
+  - name: httpd
     image: httpd
     ports:
     - containerPort: 80
