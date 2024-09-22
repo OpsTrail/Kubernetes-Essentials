@@ -39,6 +39,11 @@ kubectl create ns preprod --labels env=preprod,app=nginx
 ```
 kubectl run nginx --image=nginx -n preprod --labels env=preprod,app=webapp
 ```
+
+- Specifying label and namespace in the yaml file itself and applying
+- 
 ```
 kubectl apply -f pod.yaml
 ```
+
+- Adding labels to the running pod
