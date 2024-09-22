@@ -38,7 +38,7 @@ kubectl create ns preprod --labels env=preprod,app=nginx
 - Creating a pod with Ad-Hoc command
 ```
 kubectl run nginx --image=nginx -n preprod --labels env=preprod,app=webapp
-
+```
 ```
 kubectl apply -f pod.yaml
 ```
