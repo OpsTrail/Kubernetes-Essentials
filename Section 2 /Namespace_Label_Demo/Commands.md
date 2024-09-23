@@ -12,6 +12,13 @@ kubetcl create ns <namespace name>
 kubectl apply -f namespace.yaml
 ```
 
+### Delete Namespace
+
+- Deleting any namespace
+```
+kubectl delete ns staging
+```
+
 ### Label Creation
 
 - For creating labels there is no such YAML you need to create you can simply add labels either through Ad-Hoc commands or under the metadata section. Labels can be created for any objects that are present in the cluster and for nodes as well.
