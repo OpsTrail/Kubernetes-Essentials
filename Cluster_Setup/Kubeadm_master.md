@@ -119,8 +119,16 @@ export KUBECONFIG=/etc/kubernetes/admin.conf
 
 ### Installing Calico CNI
 
-- Applying Calico YAML file 
+- Applying the Calico YAML file 
 
 ```
 kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.1/manifests/calico.yaml
+```
+
+### Joining the worker node with master node
+
+- in case you want to join the worker node and you don't have the join token, Then in that case you can run this command to generate the token and join the worker node.
+
+```
+kubeadm token create --print-join-command
 ```
