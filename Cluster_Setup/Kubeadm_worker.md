@@ -101,7 +101,7 @@ sudo systemctl status containerd
 ```  
 ### Kubeadm join command
 
-- This join command you need to copy from the output of the kubeadm init command
+- This join command you need to copy from the output of the kubeadm init command and add in the worker node script
 
 ```
 kubeadm join 172.31.47.208:6443 --token jmyi6c.vfidjauflvpuebns --discovery-token-ca-cert-hash sha256:76c409bc97f0a5cf5b14cd30705cf84b250eb90835aab70b734e34f14c2e9628
