@@ -4,7 +4,7 @@
 
 ```
 swapoff -a
-sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 ```
 ### Loading Required Kernel Modules
 
@@ -18,13 +18,13 @@ br_netfilter
 EOF
 ```
 ```
-sudo modprobe overlay
-sudo modprobe br_netfilter
+modprobe overlay
+modprobe br_netfilter
 ```
 
 ### Configuring System Networking
 
-- Here it is Ensuring that the Linux bridge passes the ipv4 and iv6 network traffic to iptables for filtering. And also Enabling packet forwarding for IPv4, which is necessary for pod-to-pod communication across nodes.
+- Here it is Ensuring that the Linux bridge passes the ipv4 and iv6 network traffic to iptables for filtering. And it is also Enabling packet forwarding for IPv4, which is necessary for pod-to-pod communication across nodes.
 
 ```  
 cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
@@ -36,7 +36,7 @@ EOF
 - After that apply the above sysctl configurations without rebooting the system.
 
 ```
-sudo sysctl --system
+sysctl --system
 ```
 
 ### Adding Kubernetes repository
@@ -44,10 +44,10 @@ sudo sysctl --system
 - Before adding the Kubernetes repository we are doing apt update and and installing some packages
 
 ```
-sudo apt-get update
-sudo apt-get install -y apt-transport-https ca-certificates curl gpg
+apt-get update
+apt-get install -y apt-transport-https ca-certificates curl gpg
 
-sudo mkdir -p -m 755 /etc/apt/keyrings
+mkdir -p -m 755 /etc/apt/keyrings
 curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 
 echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
@@ -56,18 +56,18 @@ echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.
 ### Installing Kubeadm, Kubectl, Kubelet
 
 ```
-sudo apt-get update
-sudo apt-get install -y kubelet kubeadm kubectl
-sudo apt-mark hold kubelet kubeadm kubectl
+apt-get update
+apt-get install -y kubelet kubeadm kubectl
+apt-mark hold kubelet kubeadm kubectl
 ```
 
 ### Adding Docker Repository
 
 ```
-sudo apt-get update
-sudo install -m 0755 -d /etc/apt/keyrings
+apt-get update
+install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
+chmod a+r /etc/apt/keyrings/docker.asc
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
   $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
@@ -78,12 +78,12 @@ echo \
 - Containerd is one of the Container Runtime Interface(CRI) for kubernetes to run the containers.
 
 ```
-sudo apt-get update
-sudo apt-get install containerd.io docker-ce docker-ce-cli docker-buildx-plugin -y
+apt-get update
+apt-get install containerd.io docker-ce docker-ce-cli docker-buildx-plugin -y
 ```
 ### Configuring Systemd Cgroup for contanerd
 
-- Basically here it is Generating a default containerd configuration and modifies it to use systemd as the cgroup driver, which is recommended for Kubernetes.
+- Basically, it Generates a default containerd configuration and modifies it to use systemd as the cgroup driver, which is recommended for Kubernetes.
 
 ```
 mkdir -p /etc/containerd
@@ -95,9 +95,9 @@ sed -e 's/SystemdCgroup = false/SystemdCgroup = true/g' -i /etc/containerd/confi
 - Restarting and enablig the containerd service so the above configuration can be applied.
 
 ```
-sudo systemctl restart containerd
-sudo systemctl enable containerd
-sudo systemctl status containerd
+systemctl restart containerd
+systemctl enable containerd
+systemctl status containerd
 ```  
 ### Kubeadm join command
 
