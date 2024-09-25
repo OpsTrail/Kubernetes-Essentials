@@ -46,7 +46,7 @@ kubectl run apache --image=httpd -n dev--labels app=webapp
 ```
 - Using expose command.
 ```  
-kubectl expose pod apache --port=80 --name=httpd-clusterip -n dev --type=NodePort
+kubectl expose pod apache --port=80 --name=httpd-nodeport -n dev --type=NodePort
 ```
 
 ### Creating NodePort using YAML files
