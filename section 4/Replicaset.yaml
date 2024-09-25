@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: hello-replica
+  namespace: hello
+  labels:
+    app: hello-world
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      role: web
+    matchExpressions:
+      - key: version
+        operator: In
+        values: [v1, v2, v3]
+  template:
+    metadata:
+      name: web
+      labels:
+        role: web
+        version: v1
+        tier: front
+    spec:
+      containers:
+      - name: web
+        image: hello-world:latest
+        ports:
+        - containerPort: 80
+          protocol: TCP
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+  namespace: nodeport
+  labels:
+    role: web-service
+spec:
+  selector:
+    app: hello-world
+  type: NodePort
+  ports:
+  - port: 80
+    nodePort: 32001
