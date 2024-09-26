@@ -48,11 +48,26 @@ kubectl create deployment httpd-deploy --image=httpd
 ```
 kubectl apply -f deployment.yaml
 ```
-
+- List the deployments
 ```
-kubectl apply -f <deployment.yaml>
+kubectl get deploy <deployment name>
 ```
-
+- Inspecting deployments
+```
+kubectl describe deployment <deployment name>
+```
+- Setting New immage for deployments
+```
+- Exposing the deployment to svc
+```
+kubectl expose deployment my-nginx --type=NodePort --port=80
+```
+kubectl set image deployment/my-nginx nginx=nginx:1.21
+```
+- Scalling the deployments
+```
+kubectl scale deployment my-nginx --replicas=5
+```
 # Rolling Updates and Rollback
 
 # Deployment Strategy: Recreate
