@@ -30,6 +30,12 @@ kubectl describe rs <rs name>
 kubectl scale --replicas=5 replicaset/<rs name>
 ```
 
+### Delete Replicaset
+
+```
+kubectl delete rs <rs name>
+```
+
 # Deployments
 
 # Rolling Updates
@@ -37,9 +43,3 @@ kubectl scale --replicas=5 replicaset/<rs name>
 # Deployment Strategy: Recreate
 
 # Deployment Strategy: Blue/Green Deployment
-
-### Delete Replicaset
-
-```
-kubectl delete rs <rs name>
-```
