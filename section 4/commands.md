@@ -1,3 +1,5 @@
+# ReplicaSet
+
 ### Creating Replicaset
 
 - Using YAML file
@@ -27,6 +29,14 @@ kubectl describe rs <rs name>
 ```
 kubectl scale --replicas=5 replicaset/<rs name>
 ```
+
+# Deployments
+
+# Rolling Updates
+
+# Deployment Strategy: Recreate
+
+# Deployment Strategy: Blue/Green Deployment
 
 ### Delete Replicaset
 
