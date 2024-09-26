@@ -38,8 +38,39 @@ kubectl delete rs <rs name>
 
 # Deployments
 
-# Rolling Updates
+### Creating Deployments
+
+- Using Ad-hoc commands
+```
+kubectl create deployment httpd-deploy --image=httpd
+```
+- Using YAML file
+```
+kubectl apply -f deployment.yaml
+```
+
+```
+kubectl apply -f <deployment.yaml>
+```
+
+# Rolling Updates and Rollback
 
 # Deployment Strategy: Recreate
 
+- First Apply the YAML file to create a deployment
+```
+kubectl apply -f deploy.yaml
+```
+- List the deployment
+```
+kubectl get deploy
+```
+- Set new immage for deployment
+```
+kubectl set image deployment/my-app-deployment my-app-container=nginx:latest --record
+```
+- Check the rollout status
+```
+kubectl rollout status deployment/my-app-deployment
+```
 # Deployment Strategy: Blue/Green Deployment
