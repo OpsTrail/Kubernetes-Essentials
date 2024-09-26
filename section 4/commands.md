@@ -56,13 +56,13 @@ kubectl get deploy <deployment name>
 ```
 kubectl describe deployment <deployment name>
 ```
-- Setting New immage for deployments
-```
-- Exposing the deployment to svc
-```
-kubectl expose deployment my-nginx --type=NodePort --port=80
+- Setting New image for deployments
 ```
 kubectl set image deployment/my-nginx nginx=nginx:1.21
+```
+- Exposing Deployment to svc
+```
+kubectl expose deployment my-nginx --type=LoadBalancer --port=80
 ```
 - Scalling the deployments
 ```
