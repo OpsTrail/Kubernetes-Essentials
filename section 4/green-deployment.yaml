@@ -15,7 +15,7 @@ spec:
         app: green
     spec:
       containers:
-        - name: blue-container
+        - name: green-container
           image: nileshgule/blue-green-demo:green
           ports:
           - containerPort: 80
