@@ -98,6 +98,7 @@ kubectl rollout history deployment/<deployment-name>
 ```
 kubectl rollout status deployment/nginx
 ```
+
 # Deployment Strategy: Recreate
 
 - First Apply the YAML file to create a deployment
