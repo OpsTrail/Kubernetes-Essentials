@@ -1,3 +1,8 @@
+# MaxSurge means The number of pod that you want to bring up before terminating the old pods
+# maxUnavailable it means  the maximum number of Pods that can be unavailable during the update process.
+# revisionHistoryLimit means how many old ReplicaSets (revisions) for the Deployment you want to be retained. 
+# minReadySeconds means the minimum number of seconds a newly created Pod has to be ready without crashing or being restarted.
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
