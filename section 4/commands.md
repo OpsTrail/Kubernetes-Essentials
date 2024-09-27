@@ -103,12 +103,6 @@ kubectl rollout history deployment/<deployment-name>
 kubectl rollout status deployment/nginx
 ```
 
-### Check the currently runing image in the deployment
-
-```
-kubectl get deployment <deployment-name> -o=jsonpath='{.spec.template.spec.containers[*].image}'
-```
-
 ### Rollback
 
 - Rollback to the previous version
