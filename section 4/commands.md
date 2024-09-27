@@ -99,6 +99,14 @@ kubectl rollout history deployment/<deployment-name>
 kubectl rollout status deployment/nginx
 ```
 
+### Rollback
+
+- Rollback to the previous version
+
+```
+kubectl rollout undo deployment/nginx-deployment --to-revision=2
+```
+
 # Deployment Strategy: Recreate
 
 - First Apply the YAML file to create a deployment
@@ -112,17 +120,6 @@ kubectl get deploy
 - Set new immage for deployment
 ```
 kubectl set image deployment/my-app-deployment my-app-container=nginx:latest --record
-```
-- Check the rollout status
-```
-kubectl rollout status deployment/my-app-deployment
-```
-### Rollback
-
-- Rollback to the previous version
-
-```
-kubectl rollout undo deployment/nginx-deployment --to-revision=2
 ```
 
 # Deployment Strategy: Blue/Green Deployment
