@@ -70,6 +70,34 @@ kubectl scale deployment my-nginx --replicas=5
 ```
 # Rolling Updates and Rollback
 
+### Create Deployment
+
+- Using YAML file
+```
+kubectl apply -f rolling-update.yaml
+```
+### Change image
+
+- Using Ad-hoc commands
+```
+kubectl set image deployment/my-nginx nginx=nginx:1.21
+```
+### Annotation 
+- Add annotation after every change so that you can have the details of the change in the rollout history.
+```
+kubectl annotate deployment/nginx-deployment kubernetes.io/change-cause="image updated to 1.16.1"
+```
+### Check rollout history
+
+```
+kubectl rollout history deployment/<deployment-name>
+```
+
+### Check the rollout status
+
+```
+kubectl rollout status deployment/nginx
+```
 # Deployment Strategy: Recreate
 
 - First Apply the YAML file to create a deployment
@@ -88,4 +116,12 @@ kubectl set image deployment/my-app-deployment my-app-container=nginx:latest --r
 ```
 kubectl rollout status deployment/my-app-deployment
 ```
+### Rollback
+
+- Rollback to the previous version
+
+```
+kubectl rollout undo deployment/nginx-deployment --to-revision=2
+```
+
 # Deployment Strategy: Blue/Green Deployment
