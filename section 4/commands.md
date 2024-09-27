@@ -78,9 +78,9 @@ kubectl apply -f rolling-update.yaml
 ```
 ### Change image
 
-- Using Ad-hoc commands
+- Using Ad-hoc commands (nginx:1.25.5, nginx:1.26.0, nginx:latest)
 ```
-kubectl set image deployment/my-nginx nginx=nginx:1.21
+kubectl set image deployment/my-nginx nginx=nginx:1.25.5
 ```
 ### Annotation 
 - Add annotation after every change so that you can have the details of the change in the rollout history.
