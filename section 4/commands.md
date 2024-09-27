@@ -84,6 +84,10 @@ kubectl set image deployment/my-nginx nginx=nginx:1.21
 ```
 ### Annotation 
 - Add annotation after every change so that you can have the details of the change in the rollout history.
+- Stores the Build or any release information.
+- Stores Last update timestamp.
+- Store URLs to external systems or documentation.
+- or any Custom configuration for external systems or scripts.
 ```
 kubectl annotate deployment/nginx-deployment kubernetes.io/change-cause="image updated to 1.16.1"
 ```
