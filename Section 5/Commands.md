@@ -34,7 +34,7 @@ ctr -n k8s.io containers info <container id>
 ### Create the YAML file
 
 ```
-kubectl apply -f emptydir.yaml
+kubectl apply -f hostpath.yaml
 ```
 
 ### Exec into the pod
