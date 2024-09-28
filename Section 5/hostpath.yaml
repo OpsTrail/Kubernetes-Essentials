@@ -1,34 +1,16 @@
-apiVersion : apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
-    name: hostpath-deploy
+  name: hosthpath-pod
 spec:
-   replicas: 3
-   selector:
-     matchLabels:
-       app: myapp
-   template:
-     metadata:
-        labels:
-           app: myapp
-     spec:
-        containers:
-        - name: con1
-          image: nginx:latest
-          ports:
-          - containerPort: 80
-          volumeMounts:
-          - name: hostpath-vol
-            mountPath: /data
-        - name: con2
-          image: tomcat:latest
-          ports:
-          - containerPort: 8080
-          volumeMounts:
-          - name: hostpath-vol
-            mountPath: /data-new
-
-        volumes:
-        - name: hostpath-vol
-          hostPath:
-            path: /hdata
+  containers:
+  - image: nginx
+    name: hosthpath-container
+    volumeMounts:
+    - mountPath: /data
+      name: hosthpath-vol
+  volumes:
+  - name: hosthpath-vol
+    hostPath:
+      path: /data
+      type: DirectoryOrCreate
