@@ -6,9 +6,9 @@ spec:
   capacity:
     storage: 10Gi
   accessModes:
-    - ReadWriteOnce # it means only single node is allowed to perform read and write operations at a time
- #   - ReadOnlyMany # it means multiple node can allowed to perform only read operation at a time
- #   - ReadWriteMany # it means multiple node are allowed to perform read and write operation at a time
+    - ReadWriteOnce                                         # it means only single node is allowed to perform read and write operations at a time
+ #   - ReadOnlyMany                                           it means multiple node can allowed to perform only read operation at a time
+ #   - ReadWriteMany                                          it means multiple node are allowed to perform read and write operation at a time
   persistentVolumeReclaimPolicy: Retain
   hostPath:
     path: "/mnt/data"
