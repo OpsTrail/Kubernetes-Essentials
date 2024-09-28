@@ -1,7 +1,7 @@
 apiVersion : apps/v1
 kind: Deployment
 metadata:
-    name: emptydir-vol
+    name: emptydir-deploy
 spec:
    replicas: 3
    selector:
@@ -18,16 +18,16 @@ spec:
           ports:
           - containerPort: 80
           volumeMounts:
-          - name: myvol
+          - name: empty-dir-vol
             mountPath: /data
         - name: con2
           image: tomcat:latest
           ports:
           - containerPort: 8080
           volumeMounts:
-          - name: myvol
+          - name: empty-dir-vol
             mountPath: /data-new
 
         volumes:
-        - name: myvol
+        - name: empty-dir-vol
           emptyDir: {}
