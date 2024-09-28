@@ -1,14 +1,33 @@
-apiVersion: v1
-kind: Pod
+apiVersion : apps/v1
+kind: Deployment
 metadata:
-  name: emptydirpod
+    name: emptydir-vol
 spec:
-  containers:
-  - image: nginx
-    name: emptydircontainer
-    volumeMounts:
-    - mountPath: /data
-      name: emptydirvol
-  volumes:
-  - name: emptydirvol
-    emptyDir: {}
+   replicas: 3
+   selector:
+     matchLabels:
+       app: myapp
+   template:
+     metadata:
+        labels:
+           app: myapp
+     spec:
+        containers:
+        - name: con1
+          image: nginx:latest
+          ports:
+          - containerPort: 80
+          volumeMounts:
+          - name: myvol
+            mountPath: /data
+        - name: con2
+          image: tomcat:latest
+          ports:
+          - containerPort: 8080
+          volumeMounts:
+          - name: myvol
+            mountPath: /data-new
+
+        volumes:
+        - name: myvol
+          emptyDir: {}
