@@ -89,7 +89,7 @@ kubectl describe sc <sc name>
 kubectl apply -f <file name.yaml>
 ```
 
-### Creat PVC with storage lass name
+### Creat PVC with storage class name
 ```
 kubectl apply -f pvc-sc.yaml
 ```
@@ -100,6 +100,9 @@ kubectl apply -f pod-pv.yaml
 ```
 
 ### Delete Storage class
+
+- if you want to delete the storage you can use the below command
+- 
 ```
 kubectl delete sc <sc name>
 ```
