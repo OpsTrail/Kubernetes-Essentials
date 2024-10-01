@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: DeamonSet
 metadata:
-  name: nginx-deamonset
+  name: nginx-ds
   labels:
     app: myapp
 spec:
