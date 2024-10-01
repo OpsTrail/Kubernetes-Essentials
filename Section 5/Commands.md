@@ -94,7 +94,7 @@ kubectl apply -f <file name.yaml>
 kubectl apply -f pvc-sc.yaml
 ```
 
-### Create Pod claiming the PVC
+### Create a Pod claiming the PVC
 ```
 kubectl apply -f pod-pv.yaml
 ```
@@ -102,7 +102,6 @@ kubectl apply -f pod-pv.yaml
 ### Delete Storage class
 
 - if you want to delete the storage you can use the below command
-- 
 ```
 kubectl delete sc <sc name>
 ```
