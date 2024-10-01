@@ -38,4 +38,9 @@ kubectl rollout undo ds/nginx-ds --to-revision=2
 
 ### Add worker node
 
-- You need to add one more worker node in your cluster To check whether the deamonset will launch another copy of a pod in that newly added worker node. To add the worker node you can run the worker node script which we have seen in the cluster setup.
+- You need to add one more worker node in your cluster to check whether the deamonset will launch another copy of a pod in that newly added worker node. To add the worker node you can run the worker node script which we have seen in the cluster setup.
+- Once the worker node is added then you can see the pod will be launched in the newly created node as well.
+
+### Delete deamonset
+```
+kubectl delete ds <ds name>
