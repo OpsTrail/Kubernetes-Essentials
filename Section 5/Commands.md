@@ -53,6 +53,64 @@ touch file3.txt
 
  - Check the directory which you have created and do ls you will find the files which you have created.
 
+# PV and PVC
+
+### Create the PV and PVC
+- You can create the PV and PVC with the YAML file.
+- You can also separate the configuration of PV and PVC and run from different files. 
+```
+kubectl apply -f pv-pvc.yaml
+```
+
+### Creaate the pod climing the PVC
+```
+kubectl apply -f pod-pvc.yaml
+```
+
+### List the PV
+```
+kubectl get PV
+```
+
+### List the PVC
+```
+kubectl get PVC
+```
+
+### Describe the PV
+```
+kubectl describe PV <pv name>
+```
+
+### Describe the PVC
+```
+kubectl describe PVC <pvc name>
+```
+
+### Delete the PV
+- By specifying the pv name
+```
+kubectl delete pv <pv name>
+```
+- By specifying the YAML file
+```
+kubectl delete -f pv.yaml
+```
+
+### Delete the PVC
+- You cannot delete the pvc if any pod is using it.
+
+```
+kubectl delete PVC <PVC name>
+```
+
+**To delete the PVC which stuck in the terminating state**
+
+- The same can be done with the PV as well
+```
+kubectl patch pvc {PVC_NAME} -p '{"metadata":{"finalizers":null}}'
+```
+Here Fin
 # Storage Class
 
 ### Install the provisioner driver for the storage class
