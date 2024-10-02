@@ -16,6 +16,11 @@ kubectl describe ds <deamonset name>
 kubectl annotate deployment/nginx-deployment kubernetes.io/change-cause="image updated to 1.16.1"
 ```
 
+### Change image
+```
+kubectl set image ds/nginx nginx=nginx:1.25.5
+```
+
 ### Check rollout history
 
 ```
