@@ -27,12 +27,6 @@ kubectl set image ds/nginx nginx=nginx:1.25.5
 kubectl rollout history ds/<ds-name>
 ```
 
-### Check the rollout status
-
-```
-kubectl rollout status ds/nginx
-```
-
 ### Rollback
 
 - Rollback to the previous version
@@ -40,6 +34,7 @@ kubectl rollout status ds/nginx
 ```
 kubectl rollout undo ds/nginx-ds --to-revision=2
 ```
+
 ### Check currently which image is running in the deployment
 ```
 kubectl describe ds nginx-ds |grep image
