@@ -40,6 +40,10 @@ kubectl rollout status ds/nginx
 ```
 kubectl rollout undo ds/nginx-ds --to-revision=2
 ```
+### Check currently which image is running in the deployment
+```
+kubectl describe ds nginx-ds |grep image
+```
 
 ### Add worker node
 
