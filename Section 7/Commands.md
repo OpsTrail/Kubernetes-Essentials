@@ -11,28 +11,9 @@ kubectl get ds
 kubectl describe ds <deamonset name>
 ```
 
-### Annotation 
-```
-kubectl annotate ds/nginx-ds kubernetes.io/change-cause="image updated to 1.16.1"
-```
-
 ### Change image
 ```
 kubectl set image ds/nginx nginx=nginx:1.25.5
-```
-
-### Check rollout history
-
-```
-kubectl rollout history ds/<ds-name>
-```
-
-### Rollback
-
-- Rollback to the previous version
-
-```
-kubectl rollout undo ds/nginx-ds --to-revision=2
 ```
 
 ### Check currently which image is running in the deployment
