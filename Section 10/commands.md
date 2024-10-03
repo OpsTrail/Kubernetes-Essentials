@@ -16,6 +16,15 @@ kubectl create secret generic secretdb --from-literal=DB_USER=admin --from-liter
 ```
 kubectl apply -f secrets.yaml
 ```
+### Encode and Decode secrets values
+**Encode**
+```
+echo -n 'admin' | base64
+```
+**Decode**
+```
+echo 'YWRtaW4=' | base64 --decode
+```
 ### Using ConfigMap and Secrets in pod
 - Apply YAML file
 ```
