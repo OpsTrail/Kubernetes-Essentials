@@ -7,6 +7,7 @@ spec:
   podSelector: {} # Select all pods in Namespace A
   policyTypes:
   - Ingress
+  - Egress
   ingress:
   - from:
     - namespaceSelector:
@@ -18,3 +19,4 @@ spec:
       namespaceSelector:
         matchLabels:
           name: namespace-c # Namespace C
+  egress: []
