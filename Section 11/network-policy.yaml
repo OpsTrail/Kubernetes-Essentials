@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-ingress-from-b-and-specific-pod-in-c
+  namespace: namespace-a
+spec:
+  podSelector: {} # Select all pods in Namespace A
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: namespace-b # Allow traffic from all pods in namespace B
+    - podSelector:
+        matchLabels:
+          app: specific-pod-in-c # Allow traffic from a specific pod in namespace C
+      namespaceSelector:
+        matchLabels:
+          name: namespace-c # Namespace C
