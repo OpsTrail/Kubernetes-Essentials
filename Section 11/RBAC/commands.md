@@ -23,6 +23,15 @@ cp john.key /etc/kubernetes/pki/
 ```
 cp john.conf /etc/kubernetes/
 ```
+### Check which user you are
+```
+kubectl auth whoami
+```
+### Check if you can access perticular resource
+```
+kubectl auth can-i create pod
+kubectl auth can-i create pod --as john
+```
 ### Export Kubeconfig
 ```
 export KUBECONFIG=/etc/kubernetes/john.conf
