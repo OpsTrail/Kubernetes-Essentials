@@ -12,7 +12,7 @@ openssl req -new -key john.key -out john.csr -subj "/CN=john/O=dev-team"
 ```
 openssl x509 -req -in john.csr -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key -CAcreateserial -out john.crt -days 365
 ```
-### Copy Cert file and key
+### Copy Cert file, key and conf file
 - Once you generate the cert file and key for John user. Copy those files in a particular location.
 ```
 cp john.crt /etc/kubernetes/pki/
@@ -20,7 +20,9 @@ cp john.crt /etc/kubernetes/pki/
 ```
 cp john.key /etc/kubernetes/pki/
 ```
-
+```
+cp john.conf /etc/kubernetes/
+```
 ### Export Kubeconfig
 ```
 export KUBECONFIG=/etc/kubernetes/john.conf
