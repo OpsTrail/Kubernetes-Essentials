@@ -1,4 +1,4 @@
-# Creating a User
+# Creating a User, Cert file and key
 
 ### Generate a Private Key for the John user
 ```
