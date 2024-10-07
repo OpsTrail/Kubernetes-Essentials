@@ -155,7 +155,7 @@ kubectl apply -f privileged-pod.yaml -n prod
 ```
 kubectl apply -f baseline-pod.yaml -n prod
 ```
-Execute the below command to see the logs. After execution, the test.log file will be created.
+**Execute the below command to see the logs. After execution, the test.log file will be created.**
 ```
 tail –f /var/log/test.log
 ```
