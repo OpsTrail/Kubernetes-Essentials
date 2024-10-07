@@ -44,3 +44,8 @@ kubectl apply -f privileged-pod.yaml -n dev
 ```
 kubectl apply -f baseline-pod.yaml -n prod   
 ```
+**Make sure to delete pod by using below command in each namespace before going to next scenario.**
+```
+kubectl delete -f <yaml file name> -n <namespace name> --force
+```
+# Add Warn Mode
