@@ -145,7 +145,7 @@ volumes:
     path: /var/log/test.log
     type: FileOrCreate
 ```
-**Execute the below command to create a pod in a different namespace.**
+### Execute the below command to create a pod in a different namespace.
 
 - In this case pod will be created  but the logs will be sent to the audit.log file which we specified in the kube-apiserver.yaml.
 ```
