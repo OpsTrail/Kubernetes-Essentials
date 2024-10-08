@@ -12,11 +12,11 @@ spec:
   - from:
     - namespaceSelector:
         matchLabels:
-          name: namespace-b # Allow traffic from all pods in namespace B
+          kubernetes.io/metadata.name: namespace-b # Allow traffic from all pods in namespace B
     - podSelector:
         matchLabels:
           app: microservice # Allow traffic from a specific pod in namespace C
       namespaceSelector:
         matchLabels:
-          name: namespace-c # Namespace C
+          kubernetes.io/metadata.name: namespace-c # Namespace C
   egress: []
