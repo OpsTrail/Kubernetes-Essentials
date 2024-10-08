@@ -6,7 +6,7 @@ metadata:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: Pod1
+  name: nginx-pod-db
   namespace: namespace-c
   labels:
     app: db
@@ -22,7 +22,7 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: Pod2
+  name: nginx-pod-microservice
   namespace: namespace-c
   labels:
     app: microservice
