@@ -19,3 +19,21 @@ spec:
         - ALL
         add:
         - CHOWN
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: secure-pod
+spec:
+  containers:
+  - name: secure-container2
+    image: busybox:latest
+    command: ["sleep", "3600"]
+    securityContext:
+      capabilities:
+        drop:
+        - ALL
+        add:
+        - CHOWN
