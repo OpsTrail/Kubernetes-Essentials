@@ -25,7 +25,7 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: secure-pod
+  name: secure-pod-capabiliies
 spec:
   containers:
   - name: secure-container2
