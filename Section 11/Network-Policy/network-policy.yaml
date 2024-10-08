@@ -15,7 +15,7 @@ spec:
           name: namespace-b # Allow traffic from all pods in namespace B
     - podSelector:
         matchLabels:
-          app: specific-pod-in-c # Allow traffic from a specific pod in namespace C
+          app: microservice # Allow traffic from a specific pod in namespace C
       namespaceSelector:
         matchLabels:
           name: namespace-c # Namespace C
