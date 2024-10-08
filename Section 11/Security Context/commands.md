@@ -9,7 +9,7 @@ kubectl exec -it secure-pod -- id
 kubectl exec -it secure-pod -- su root
 ```
 ### Checking for CHOWN capabilities
-- Create a file. This command wont work because we have given **readonlyrootfilesystem** as true 
+- Create a file. This command wont work because we have given **readOnlyRootFilesystem** as true even after we mentioned the capabilities it will not allow to create the file in the root file system.
 ```
 kubectl exec -it secure-pod -- touch /tmp/testfile
 ```
