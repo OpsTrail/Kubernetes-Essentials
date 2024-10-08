@@ -9,15 +9,7 @@ kubectl exec -it secure-pod -- id
 kubectl exec -it secure-pod -- su root
 ```
 ### Checking for CHOWN capabilities
-- Create a file.
+- Create a file. This command wont work because we have given **readonlyrootfilesystem** as true 
 ```
 kubectl exec -it secure-pod -- touch /tmp/testfile
-```
-- Change the ownership
-```
-kubectl exec -it secure-pod -- chown 2000:2000 /tmp/testfile
-```
-- Check the ownership
-```
-kubectl exec -it secure-pod -- ls -l /tmp/testfile
 ```
