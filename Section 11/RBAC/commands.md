@@ -12,7 +12,7 @@ openssl req -new -key john.key -out john.csr -subj "/CN=john/O=dev-team"
 ```
 ### Signing the CSR using the Kubernetes CA cert
 - Now that we have generated the CSR, Kubernetes will use the trusted entities which are ca.crt(Certificate authority certificate) and ca.key(Certificate authority Private Key) to add the digital signature and validate the John user.
-- So whenever John makes any request to the API server like get pods. its certificate which the john.crt will be used to get the identity information of the user the private which is the john.key will be used to authenticate and encrypt the user request.
+- So whenever John makes any request to the API server like get pods. its certificate which is the john.crt will be used to identify the user and the private which is the john.key will be used to authenticate and encrypt the user request.
 ```
 openssl x509 -req -in john.csr -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key -CAcreateserial -out john.crt -days 365
 ```
