@@ -1,19 +1,23 @@
 # Creating a User, Cert file and key
 
 ### Generate a Private Key for the John user
+- The purpose of creating a private key and crt is to authorize and validate the John user.
 ```
 openssl genrsa -out john.key 2048
 ```
 ###  Creating a certificate signing request (CSR) for John
+- The csr will generate the certificate for john user that will be signed and validated by the trusted entities.
 ```
 openssl req -new -key john.key -out john.csr -subj "/CN=john/O=dev-team"
 ```
 ### Signing the CSR using the Kubernetes CA cert
+- Now that we have generated the CSR, Kubernetes will use ca.crt and ca.key to add the digital signature to validate the John user.
+- So whenever John makes any request to the API server like get pods. its certificate which the john.crt will be used to get the identity information of the user the private which is the john.key will be used to authenticate and encrypt the user request.
 ```
 openssl x509 -req -in john.csr -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key -CAcreateserial -out john.crt -days 365
 ```
 ### Copy Cert file, key and conf file
-- Once you generate the cert file and key for John user. Copy those files in a particular location.
+- Once you generate the cert file and key for John user. Copy those files at **/etc/kubernetes/pki/** although you can place these files wherever you want but it's a good practice to store all the cert files and keys in a common place.
 ```
 cp john.crt /etc/kubernetes/pki/
 ```
@@ -27,10 +31,9 @@ cp john.conf /etc/kubernetes/
 ```
 kubectl auth whoami
 ```
-### Check if you can access perticular resource
+### Check if you can access particular resource
 ```
 kubectl auth can-i create pod
-kubectl auth can-i create pod --as john
 ```
 ### Export Kubeconfig
 ```
