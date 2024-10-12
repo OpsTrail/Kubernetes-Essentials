@@ -6,18 +6,18 @@ metadata:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-  - host: "www.example.com"
+  - host: "www.opstrail.com"
     http:
       paths:
       - pathType: Prefix
-        path: "/abcd"
+        path: "/first"
         backend:
           service:
             name: hello-kubernetes-first
             port:
               number: 80
       - pathType: Prefix
-        path: "/efgh"
+        path: "/second"
         backend:
           service:
             name: hello-kubernetes-second
