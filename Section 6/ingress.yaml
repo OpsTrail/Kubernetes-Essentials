@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hello-kubernetes-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: "www.example.com"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/abcd"
+        backend:
+          service:
+            name: hello-kubernetes-first
+            port:
+              number: 80
+      - pathType: Prefix
+        path: "/efgh"
+        backend:
+          service:
+            name: hello-kubernetes-second
+            port:
+              number: 80
