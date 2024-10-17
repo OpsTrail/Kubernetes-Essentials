@@ -1,5 +1,5 @@
 # Upgrade Master Node
-- Run the apt update command and then run the Madison command to list the latest version.
+- Run the apt update command and then run the Madison command to list the latest packages.
 ```
 apt update
 ```
