@@ -1,7 +1,7 @@
 # Adding the repository
 ### Do this for both the Master and Worker Node
 
-- If you want to upgrade the kubeadm to any specific version (for eg v1.30.5 to 1.31.0) then you need to add the repository and gpg key of that new version.
+- If you want to upgrade the kubeadm to any specific version (for eg v1.30 to 1.31) then you need to add the repository and gpg key of that new version.
 
 - edit the **/etc/apt/sources.list.d/kubernetes.list** and paste the repo URL
 ```
