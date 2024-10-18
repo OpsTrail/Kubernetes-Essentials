@@ -1,3 +1,16 @@
+# Adding the repository
+### Do this for both the Master and Worker Node
+
+- If you want to upgrade the kubeadm to any specific version (for eg v1.30.5 to 1.31.0) then you need to add the repository and gpg key of that new version.
+
+- edit the **/etc/apt/sources.list.d/kubernetes.list** and paste the repo URL
+```
+deb [signed-by=/etc/apt/keyrings/kubernetes-1-31-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /
+```
+- After That add the GPG key for the repository to a different file location
+```
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-1-31-apt-keyring.gpg
+```
 # Upgrade Master Node
 - Run the apt update command and then run the Madison command to list the latest packages.
 ```
@@ -5,7 +18,7 @@ apt update
 ```
 ```
 apt-cache madison kubeadm
-```
+``` 
 **NOTE: Make sure that the upgrade procedure should be done on one node at a time**
 
 ### Upgrading the control Plane Node
