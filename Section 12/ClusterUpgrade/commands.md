@@ -40,7 +40,7 @@ kubeadm upgrade plan
 ```
 - To run the upgrade for you kubeadm
 ```
-kubeadm upgrade apply v1.31.1
+kubeadm upgrade apply v1.31.0
 ```
 - Now if you do get nodes
 ```
@@ -59,7 +59,7 @@ apt-mark unhold kubelet kubectl
 ```
 - Run the apt update and install the latest version of the kubelet and kubectl
 ```
-apt-get update && apt-get install -y kubelet='1.31.1' kubectl='1.31.1'
+apt-get update && apt-get install -y kubelet=1.31.0-1.1 kubectl=1.31.0-1.1
 ```
 - After installing mark the kubectl and kubelt on hold
  ``` 
@@ -85,7 +85,7 @@ apt-mark unhold kubeadm
 ```
 - Update the kubeadm
 ```
-apt-get update && apt-get install -y kubeadm='1.31.1'
+apt-get update && apt-get install -y kubeadm=1.31.0-1.1
 ```
 - Mark as hold for kubeadm
 ```
@@ -105,7 +105,7 @@ kubectl drain <node-to-drain> --ignore-daemonsets
 apt-mark unhold kubelet kubectl
 ```
 ```
-apt-get update && apt-get install -y kubelet='1.31.1' kubectl='1.31.1'
+apt-get update && apt-get install -y kubelet=1.31.0-1.1 kubectl=1.31.0-1.1
 ```
 ```
 apt-mark hold kubelet kubectl
