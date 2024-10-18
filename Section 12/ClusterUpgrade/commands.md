@@ -28,13 +28,13 @@ apt-mark unhold kubeadm
 ```
 - Install the latest version of kubeadm
 ```
-apt-get update && sudo apt-get install -y kubeadm='1.31.1'
+apt-get update && sudo apt-get install -y kubeadm=1.31.0-1.1
 ```
 - After installing the latest version mark kubeadm as hold.
 ```
 apt-mark hold kubeadm
 ```
-- Run the plan command. This command will show you that your cluster can be upgraded and fetch the latest version to which the cluster will be upgraded. It will also show the components with their version states.
+- Run the plan command. This command will show you that your cluster can be upgraded and fetch the latest version to which the cluster will be upgraded. 
 ```
 kubeadm upgrade plan
 ```
