@@ -5,11 +5,11 @@
 
 - edit the **/etc/apt/sources.list.d/kubernetes.list** and paste the repo URL
 ```
-deb [signed-by=/etc/apt/keyrings/kubernetes-1-31-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /
+deb [signed-by=/etc/apt/keyrings/kubernetes-1-31-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /
 ```
 - After That add the GPG key for the repository to a different file location
 ```
-curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-1-31-apt-keyring.gpg
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-1-31-apt-keyring.gpg
 ```
 # Upgrade Master Node
 - Run the apt update command and then run the Madison command to list the latest packages.
