@@ -31,7 +31,7 @@ kubectl exec -it webserver -- sh
 ```
 curl <svc ip>
 ```
-- You can also run curl command within the cluster
+- You can also run the curl command within the cluster
 ```
 curl <svc IP>
 ```
@@ -42,7 +42,7 @@ curl <svc IP>
 
 - create a pod
 ```
-kubectl run apache --image=httpd -n dev--labels app=webapp 
+kubectl run apache --image=httpd -n dev --labels app=webapp 
 ```
 - Using expose command.
 ```  
@@ -51,7 +51,7 @@ kubectl expose pod apache --port=80 --name=httpd-nodeport -n dev --type=NodePort
 
 ### Creating NodePort using YAML files
 
-- Apply pod.yaml
+- Apply nodeport.yaml
 
 ```
 kubectl apply -f nodeport.yaml
@@ -59,4 +59,29 @@ kubectl apply -f nodeport.yaml
 
 ### Access the application
 
-- For accessing the application you can copy the public ip of your worker node and run it in the browser with the port.
+To access the application, you can copy the public IP of your worker node and run it in a browser with the port.
+
+# LoadBalncer
+
+### Creating LoadBalancer using Ad-hoc commands
+
+- create a pod
+```
+kubectl run apache --image=httpd -n dev --labels app=webapp 
+```
+- Using expose command.
+```  
+kubectl expose pod apache --port=80 --name=httpd-nodeport -n dev --type=NodePort
+```
+
+### Creating NodePort using YAML files
+
+- Apply loadbalancer.yaml
+
+```
+kubectl apply -f loadbalncer.yaml
+```
+
+### Access the application
+
+- For accessing the application you can copy the load balancer dns and run it in the browser.
