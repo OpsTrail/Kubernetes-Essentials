@@ -15,7 +15,8 @@ helm install nginx-ingress ingress-nginx/ingress-nginx --set controller.publishS
 ```
 kubectl --namespace default get services -o wide -w nginx-ingress-ingress-nginx-controller
 ```
-### Create Ingress resource
+# Create Ingress resource and Deployment
+### Ingress resource
 - Apply ingress file
 ```
 kubectl apply -f ingress.yaml
