@@ -25,7 +25,7 @@ kubectl get pods -n prometheus
 ```
 kubectl get svc -n prometheus
 ```
-- Edit the SVC and change the type of the SVC to NodePort
+**Edit the SVC and change the type of the SVC to NodePort**
 - For Prometheus
 ```
 kubectl edit svc stable-grafana -n prometheus
