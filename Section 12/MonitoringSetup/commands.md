@@ -30,7 +30,7 @@ kubectl get svc -n prometheus
 **Edit the SVC and change the type of the SVC to NodePort to access it from the browser**
 - For Prometheus
 ```
-kubectl edit svc stable-grafana -n prometheus
+kubectl edit svc stable-kube-prometheus-sta-prometheus -n prometheus
 ```
 - For Grafana
 ```
