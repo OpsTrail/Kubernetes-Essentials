@@ -42,6 +42,6 @@ kubectl get secret stable-grafana -o jsonpath="{.data.admin-password}" -n promet
 ### Import Grafana Dashboard
 - You can import the different dashboards from this link: https://grafana.com/grafana/dashboards/
 - Get the dashboard ID and import it.
-**- For the demo, I am using:**
+**- For demo i using below dashboards**
 - 8171 - nodes metrics
 - 741 - deployments metrics
