@@ -7,6 +7,8 @@ helm repo add stable https://charts.helm.sh/stable
 ```
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 ```
+# Installing Prometheus and Grafana
+
 - Create a Prometheus namespace
 ```
 kubectl create namespace prometheus
