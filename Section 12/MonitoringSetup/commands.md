@@ -1,3 +1,5 @@
+Helm is a package manager for Kubernetes which is used to package, configure, and deploy Kubernetes resources like deployments, ingress, service etc.
+
 # Add Helm Repository
 - Add stable helm repository
 ```
