@@ -45,3 +45,6 @@ kubectl get secret stable-grafana -o jsonpath="{.data.admin-password}" -n promet
 - **For the demo I am using the below dashboards:**
 - 8171 - nodes metrics
 - 741 - deployments metrics
+
+So this was the overall setup of Prom and grafan i hope you got the understanding.
+At the same time, I hope you have an overall understanding of the Kubernetes concept we discussed so far throughout the course. I wish you good luck.
