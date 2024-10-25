@@ -67,11 +67,11 @@ To access the application, you can copy the public IP of your worker node and ru
 
 - create a pod
 ```
-kubectl run apache --image=httpd -n dev --labels app=webapp 
+kubectl run apache --image=httpd --labels app=webapp 
 ```
 - Using expose command.
 ```  
-kubectl expose pod apache --port=80 --name=httpd-nodeport -n dev --type=LoadBalancer
+kubectl expose pod apache --port=80 --name=httpd-lb --type=LoadBalancer
 ```
 
 ### Creating NodePort using YAML files
