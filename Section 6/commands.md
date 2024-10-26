@@ -9,7 +9,7 @@ helm repo update
 ```
 - Finally, run the following command to install the Nginx ingress
 ```
-helm install nginx-ingress ingress-nginx/ingress-nginx --version 1.4.0 --set controller.publishService.enabled=true 
+helm install nginx-ingress ingress-nginx/ingress-nginx --set controller.publishService.enabled=true 
 ```
 - You can watch the Load Balancer become available by running
 ```
