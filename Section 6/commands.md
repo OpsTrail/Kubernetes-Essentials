@@ -1,4 +1,10 @@
 # Nginx-Ingress Controller
+- Install Helm
+```
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+```
 
 - To install the Nginx Ingress Controller to your cluster, you’ll first need to add its repository to Helm by running
 ```
@@ -35,12 +41,12 @@ kubectl apply -f second-deployment.yaml
 - Host file will act as local DNS resolver. If you have your domain either in Rouute53 or any other DNS provider you can add the load balancer DNS in the records. Others add it in the local Host File
 
 **In Windows**
-- Open Notepad as administrator and open the host file in the Notepad at given path
+- Open Notepad as administrator and open the host file in the Notepad at the given path
 ```
 C:\Windows\System32\drivers\etc\hosts
 ```
-- once you open the notepad add the external IP that you are getting on the GKE cluster
-- Make entry like below:
+- Once you open the Notepad add the external IP that you are getting on the GKE cluster. Make the entry as shown below and save the file.
+- Now try to access the domain from your browser.
 ![image](https://github.com/user-attachments/assets/2ef736b4-9f63-4a13-8452-b765c17e174e)
 
 
