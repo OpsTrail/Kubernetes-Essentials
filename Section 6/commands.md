@@ -47,6 +47,6 @@ C:\Windows\System32\drivers\etc\hosts
 ```
 - Once you open the Host file add the external IP that you are getting on the GKE cluster. Make the entry as shown below and save the file.
 
-![image](https://github.com/user-attachments/assets/2ef736b4-9f63-4a13-8452-b765c17e174e)
+![image](https://github.com/user-attachments/assets/961ad4ce-f161-4085-9eae-1fe581063173)
 
 - Now try to access the domain from your browser.
