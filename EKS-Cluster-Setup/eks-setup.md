@@ -1,4 +1,4 @@
-# create Bastion instance
+### create Bastion instance
 
 | Purpose   | VM Name          | CPU | Memory | Disk  | Operating System |
 | -------   | ---------------- | --- | ------ | ----  | ---------------- |
