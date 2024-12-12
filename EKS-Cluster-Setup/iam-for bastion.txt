@@ -1,11 +1,8 @@
-# IAM role for Bastion
-
 1. AmazonEC2FullAccess (Managed)
 2. AmazonEC2ReadOnlyAccess (Managed)
 3. AmazonEKSClusterPolicy (Managed)
 4. AmazonEKSWorkerNodePolicy (Managed)
 5. AmazonSSMManagedInstanceCore (Managed)
-
 6. EKSFull Access
 
 {
