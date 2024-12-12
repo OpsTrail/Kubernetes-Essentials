@@ -1,3 +1,8 @@
+# create Bastion instance
+
+| Purpose   | VM Name          | CPU | Memory | Disk  | Operating System |
+| -------   | ---------------- | --- | ------ | ----  | ---------------- |
+| Machine 1 | EKS-bastion              |  1  | 2 GB   | 10 GB | Ubuntu           |
 
 ### Install AWS CLI
 ```
