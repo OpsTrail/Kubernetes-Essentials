@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis-server
+  labels:
+    role: cache-server
+spec:
+  containers:
+  - name: redis-server
+    image: redis
+    ports:
+    - containerPort: 6379
+      protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-service
+  labels:
+    role: redis-service
+spec:
+  selector:
+    role: cache-server
+  type: ClusterIP
+  ports:
+  - port: 6379
